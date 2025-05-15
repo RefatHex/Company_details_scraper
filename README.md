@@ -31,11 +31,13 @@ This tool automatically finds company websites and extracts contact information 
      ```
      cd path\to\website_details
      ```
-   - Set up the required environment by typing these commands:
+   - Install pipenv if you don't have it already:
      ```
-     python -m venv venv
-     venv\Scripts\activate
-     pip install -r requirements.txt
+     pip install pipenv
+     ```
+   - Set up the required environment by typing:
+     ```
+     pipenv install
      ```
 
 ## Running the Tool
@@ -46,25 +48,26 @@ This tool automatically finds company websites and extracts contact information 
    cd path\to\website_details
    ```
 
-2. **Activate the environment**:
+2. **Run the tool with pipenv**:
 
    ```
-   venv\Scripts\activate
+   pipenv run python script.py
    ```
 
-3. **Run the tool**:
+   Alternatively, you can activate the pipenv shell first and then run the script:
 
    ```
+   pipenv shell
    python script.py
    ```
 
-4. **Follow the on-screen instructions**:
+3. **Follow the on-screen instructions**:
 
    - When prompted, enter the name of your Excel file (e.g., `companies.xlsx`)
    - Confirm to begin the process
    - The tool will start collecting information
 
-5. **Get Your Results**:
+4. **Get Your Results**:
    - When complete, you'll find a new CSV file in the same folder
    - The filename will be based on your input file (e.g., `companies_contacts.csv`)
    - Open this file with Excel to see all the collected information
