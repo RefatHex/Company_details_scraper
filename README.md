@@ -1,105 +1,94 @@
-# Company Website and Contact Information Scraper
+# Company Contact Scraper
 
-This tool automatically finds company websites and extracts contact information (phone numbers and emails) without manual searching.
+An efficient multi-threaded web scraper for extracting company contact information.
 
-## What This Tool Does
+## Features
 
-- Reads a list of company names from your Excel spreadsheet
-- Automatically finds each company's official website
-- Extracts contact information (phone numbers and email addresses)
-- Saves all gathered information in a easy-to-use CSV file
+- Batch processing of company data (10 companies per batch)
+- Multi-threaded execution for improved performance
+- Intelligent contact information extraction
+- Detailed logging system
+- Result export to Excel
 
-## Before You Start: Requirements
+## Prerequisites
 
-1. **Install Python**: Download and install Python 3.8 or newer from [python.org](https://python.org)
+- Python 3.8 or higher
+- Google Chrome browser
+- Windows operating system
 
-   - During installation, make sure to check "Add Python to PATH"
+## Installation
 
-2. **Download This Tool**: Make sure you have all the files in this folder
+1. Clone this repository
+2. Install required dependencies:
 
-## Step-by-Step Setup Guide
+```bash
+pip install -r requirements.txt
+```
 
-1. **Prepare Your Data**:
+## Required Input
 
-   - Create an Excel file (for example, `companies.xlsx`)
-   - In the first column, list all company names you want to research
-   - Save this Excel file in the same folder as this tool
+Place your input file `sheet.xlsx` in the project root directory. The file should contain a list of company names to process.
 
-2. **One-Time Setup** (you only need to do this once):
-   - Open Command Prompt (search for "cmd" in Windows start menu)
-   - Navigate to this folder by typing:
-     ```
-     cd path\to\website_details
-     ```
-   - Install pipenv if you don't have it already:
-     ```
-     pip install pipenv
-     ```
-   - Set up the required environment by typing:
-     ```
-     pipenv install
-     ```
+## Usage
 
-## Running the Tool
+### Option 1: Using Batch File
 
-1. **Open Command Prompt** and navigate to this folder:
+Simply run:
 
-   ```
-   cd path\to\website_details
-   ```
+```bash
+run_scraper.bat
+```
 
-2. **Run the tool with pipenv**:
+### Option 2: Manual Execution
 
-   ```
-   pipenv run python script.py
-   ```
+```bash
+python main.py
+```
 
-   Alternatively, you can activate the pipenv shell first and then run the script:
+## Output Files
 
-   ```
-   pipenv shell
-   python script.py
-   ```
+- `results.xlsx`: Contains scraped company data
+- `scraping.log`: General execution logging
+- `scraper.log`: Detailed processing logs
 
-3. **Follow the on-screen instructions**:
+## Dependencies
 
-   - When prompted, enter the name of your Excel file (e.g., `companies.xlsx`)
-   - Confirm to begin the process
-   - The tool will start collecting information
+```
+pandas==2.1.0
+selenium==4.15.2
+beautifulsoup4==4.12.2
+requests==2.31.0
+fake-useragent==1.4.0
+tldextract==5.1.1
+openpyxl==3.1.2
+urllib3==2.0.7
+```
 
-4. **Get Your Results**:
-   - When complete, you'll find a new CSV file in the same folder
-   - The filename will be based on your input file (e.g., `companies_contacts.csv`)
-   - Open this file with Excel to see all the collected information
+## Process Flow
 
-## Understanding Your Results
+1. Reads company names from input Excel file
+2. Processes companies in batches of 10
+3. For each company:
+   - Searches for official website
+   - Analyzes website content
+   - Extracts contact information
+4. Saves results to Excel file
 
-The results CSV file will contain:
+## Logs
 
-- **Company**: The company name from your input file
-- **Website**: The URL of the company's official website
-- **Contact Numbers**: Any phone numbers found on the website
-- **Emails**: Any email addresses found on the website
+- Check `scraping.log` for high-level execution information
+- Check `scraper.log` for detailed processing logs
 
-## Troubleshooting
+## Error Handling
 
-**If the tool doesn't start:**
+- Automatic retry mechanism for failed requests
+- Timeout handling for unresponsive websites
+- Detailed error logging
 
-- Make sure Python is installed correctly
-- Verify all setup steps were completed
-- Try restarting your computer
+## Contributing
 
-**If you don't see results for some companies:**
+Feel free to submit issues and enhancement requests.
 
-- Some companies may not have easily accessible contact information
-- Check your internet connection
-- The tool creates a log file (`scraper.log`) that can help identify issues
+## License
 
-**If the tool stops during processing:**
-
-- Don't worry! The tool saves progress automatically
-- Just run it again with the same input file, and it will continue where it left off
-
-## Need Further Help?
-
-If you encounter any issues or have questions about using this tool, please contact the developer who provided it to you.
+This project is licensed under the MIT License - see the LICENSE file for details.
